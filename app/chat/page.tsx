@@ -1,10 +1,25 @@
 "use client";
 
 import { useState } from "react";
-import { Typography, Button, Stack, TextField, Grid, AppBar, Toolbar, Box, IconButton, Drawer, List, ListItem, ListItemText, useMediaQuery, Avatar } from "@mui/material";
+import {
+  Typography,
+  Button,
+  Stack,
+  TextField,
+  AppBar,
+  Toolbar,
+  Box,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  useMediaQuery,
+  Avatar,
+} from "@mui/material";
 import Link from "next/link";
 import { styled } from "@mui/system";
-import { Linkedin, Github, Mail, Menu, BrainCircuit } from "lucide-react"; // Import an icon
+import { Menu, BrainCircuit } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import "@fontsource/oswald/200.css";
 import "@fontsource/oswald/400.css";
@@ -25,17 +40,17 @@ const Navbar = styled(AppBar)({
 });
 
 const ChatSection = styled(Box)({
-  width: "100%", // Full width
-  height: "100vh", // Full viewport height
-  backgroundColor: "#ECF0F1", // Navy Blue
-  color: "#FFFFFF", // White text
-  margin: 0, // Removes any margin
-  boxSizing: "border-box", // Ensures padding doesn't affect width
-  display: "flex", // Use flexbox for centering
+  width: "100%",
+  height: "100vh",
+  backgroundColor: "#ECF0F1",
+  color: "#FFFFFF",
+  margin: 0,
+  boxSizing: "border-box",
+  display: "flex",
   flexDirection: "column",
-  justifyContent: "center", // Vertically center the content
-  alignItems: "center", // Horizontally center the content
-  fontFamily: 'Roboto',
+  justifyContent: "center",
+  alignItems: "center",
+  fontFamily: "Roboto",
 });
 
 export default function Chat() {
@@ -51,42 +66,45 @@ export default function Chat() {
   };
   const [messages, setMessages] = useState([
     {
-      role: 'assistant',
+      role: "assistant",
       content: `Hi! I'm the ProfGuide AI support assistant. How can I help you today?`,
     },
-  ])
-  const [message, setMessage] = useState('')
+  ]);
+  const [message, setMessage] = useState("");
 
   const sendMessage = async () => {
     setMessages((messages) => [
       ...messages,
-      { role: 'user', content: message },
-      { role: 'assistant', content: '' },
+      { role: "user", content: message },
+      { role: "assistant", content: "" },
     ]);
-  
-    setMessage('');
-    const response = await fetch('/api/chat', {
-      method: 'POST',
+
+    setMessage("");
+    const response = await fetch("/api/chat", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify([...messages, { role: 'user', content: message }]),
+      body: JSON.stringify([...messages, { role: "user", content: message }]),
     });
-  
+
     if (!response.body) {
-      throw new Error('Response body is null');
+      throw new Error("Response body is null");
     }
-  
+
     const reader = response.body.getReader();
     const decoder = new TextDecoder();
-    let result = '';
-  
-    function processText({ done, value }: ReadableStreamReadResult<Uint8Array>): Promise<string> {
+    let result = "";
+
+    function processText({
+      done,
+      value,
+    }: ReadableStreamReadResult<Uint8Array>): Promise<string> {
       if (done) {
         return Promise.resolve(result);
       }
       const text = decoder.decode(value || new Uint8Array(), { stream: true });
-  
+
       setMessages((messages) => {
         let lastMessage = messages[messages.length - 1];
         let otherMessages = messages.slice(0, messages.length - 1);
@@ -95,16 +113,15 @@ export default function Chat() {
           { ...lastMessage, content: lastMessage.content + text },
         ];
       });
-  
+
       return reader.read().then(processText);
     }
-  
+
     return reader.read().then(processText);
   };
-  
+
   return (
     <>
-   
       {/* Navbar */}
       <Navbar sx={{ width: "100%" }}>
         <Toolbar
@@ -118,7 +135,6 @@ export default function Chat() {
             padding: isMobile ? "0 6px" : "0 40px",
           }}
         >
-          {/* Left-aligned title */}
           <Typography
             variant="h6"
             component="div"
@@ -131,7 +147,6 @@ export default function Chat() {
             ProfGuide AI
           </Typography>
 
-          {/* Right-aligned Hamburger menu on mobile and "Let's Start" button on desktop */}
           {isMobile ? (
             <>
               <IconButton
@@ -139,7 +154,7 @@ export default function Chat() {
                 color="inherit"
                 onClick={toggleMenu}
                 sx={{
-                  padding: "20px", // Ensure enough padding for the hamburger icon
+                  padding: "20px",
                 }}
               >
                 <Menu />
@@ -150,19 +165,34 @@ export default function Chat() {
                 onClose={closeMenu}
                 sx={{
                   "& .MuiDrawer-paper": {
-                    backgroundColor: "#2C3E50", // Background color for the drawer
-                    color: "white", // Default text color for the drawer
+                    backgroundColor: "#2C3E50",
+                    color: "white",
                   },
                 }}
               >
                 <List>
-                  <ListItem button onClick={closeMenu} component={Link} href="/#home">
+                  <ListItem
+                    button
+                    onClick={closeMenu}
+                    component={Link}
+                    href="/#home"
+                  >
                     <ListItemText primary="Home" />
                   </ListItem>
-                  <ListItem button onClick={closeMenu} component={Link} href="/#about">
+                  <ListItem
+                    button
+                    onClick={closeMenu}
+                    component={Link}
+                    href="/#about"
+                  >
                     <ListItemText primary="About" />
                   </ListItem>
-                  <ListItem button onClick={closeMenu} component={Link} href="/#working">
+                  <ListItem
+                    button
+                    onClick={closeMenu}
+                    component={Link}
+                    href="/#working"
+                  >
                     <ListItemText primary="Working" />
                   </ListItem>
                 </List>
@@ -220,118 +250,124 @@ export default function Chat() {
       </Navbar>
 
       <ChatSection id="chat">
-  <Stack
-    direction={'column'}
-    width={isMobile ? "90%" : "1000px"}
-    height={isMobile ? "calc(100vh - 60px)" : "500px"}
-    p={isMobile ? 1 : 2}  // Adjust padding for mobile
-    spacing={isMobile ? 2 : 3}
-    mt={isMobile ? 9 : 10}
-    sx={{
-      backgroundColor: "#344B63", 
-      boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)", 
-      borderRadius: 4, 
-      overflow: "hidden",  // Prevent overflow
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-    }}
-  >
-    <Stack
-      direction={'column'}
-      spacing={2}
-      flexGrow={1}
-      overflow="auto"
-      maxHeight="100%"
-      sx={{
-        width: "100%",
-      }}
-    >
-      {messages.map((message, index) => (
-        <Box
-          key={index}
-          display="flex"
-          justifyContent={
-            message.role === 'assistant' ? 'flex-start' : 'flex-end'
-          }
+        <Stack
+          direction={"column"}
+          width={isMobile ? "90%" : "1000px"}
+          height={isMobile ? "calc(100vh - 60px)" : "500px"}
+          p={isMobile ? 1 : 2}
+          spacing={isMobile ? 2 : 3}
+          mt={isMobile ? 9 : 10}
+          sx={{
+            backgroundColor: "#344B63",
+            boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
+            borderRadius: 4,
+            overflow: "hidden",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
         >
-          {message.role === 'assistant' && (
-            <Avatar
-              sx={{
-                backgroundColor: '#162330',
-                color: '#ffffff',
-                marginRight: 2,
-              }}
-            >
-              <BrainCircuit/>
-            </Avatar>
-          )}
-          <Box
+          <Stack
+            direction={"column"}
+            spacing={2}
+            flexGrow={1}
+            overflow="auto"
+            maxHeight="100%"
             sx={{
-              backgroundColor:
-                message.role === 'assistant' ? '#162330' : '#193047',
-              color: "white",
-              borderRadius: 5,
-              pt: 2, 
-              pb: 2, 
-              pl: 5, 
-              pr: 5, 
-              maxWidth: isMobile ? "90%" : "75%",
-              lineHeight: 1.5,
+              width: "100%",
             }}
           >
-            <ReactMarkdown>
-              {message.content}
-            </ReactMarkdown>
-          </Box>
-        </Box>
-      ))}
-    </Stack>
-    <Stack direction={isMobile ? 'column' : 'row'} spacing={isMobile ? 1 : 2} sx={{ width: "100%", flexWrap: isMobile ? "wrap" : "nowrap" }}>
-      <TextField
-        label="Message"
-        placeholder='e.g., I would like you to list professors who excel in Computer Science.'
-        fullWidth
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        InputProps={{
-          sx: {
-            color: 'white',
-            '& .MuiOutlinedInput-notchedOutline': {
-              borderColor: '#DEA204',
-            },
-            '&:hover .MuiOutlinedInput-notchedOutline': {
-              borderColor: '#DEA204',
-            },
-            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-              borderColor: '#DEA204',
-            },
-          },
-        }}
-        InputLabelProps={{
-          sx: {
-            color: '#DEA204',
-            '&.Mui-focused': {
-              color: '#DEA204',
-            },
-          },
-        }}
-      />
-      <Button variant="contained" onClick={sendMessage} sx={{
-        backgroundColor: "#DEA204",
-        "&:hover": { backgroundColor: "#A57801" },
-        color: "#ffffff",
-        fontFamily: "'Oswald', sans-serif",
-        fontWeight: "500",
-        fontSize: { xs: "14px", md: "16px" },
-        mt: isMobile ? 2 : 0,
-      }}>
-        Send
-      </Button>
-    </Stack>
-  </Stack>
-</ChatSection>
+            {messages.map((message, index) => (
+              <Box
+                key={index}
+                display="flex"
+                justifyContent={
+                  message.role === "assistant" ? "flex-start" : "flex-end"
+                }
+              >
+                {message.role === "assistant" && (
+                  <Avatar
+                    sx={{
+                      backgroundColor: "#162330",
+                      color: "#ffffff",
+                      marginRight: 2,
+                    }}
+                  >
+                    <BrainCircuit />
+                  </Avatar>
+                )}
+                <Box
+                  sx={{
+                    backgroundColor:
+                      message.role === "assistant" ? "#162330" : "#193047",
+                    color: "white",
+                    borderRadius: 5,
+                    pt: 2,
+                    pb: 2,
+                    pl: 5,
+                    pr: 5,
+                    maxWidth: isMobile ? "90%" : "75%",
+                    lineHeight: 1.5,
+                  }}
+                >
+                  <ReactMarkdown>{message.content}</ReactMarkdown>
+                </Box>
+              </Box>
+            ))}
+          </Stack>
+          <Stack
+            direction={isMobile ? "column" : "row"}
+            spacing={isMobile ? 1 : 2}
+            sx={{ width: "100%", flexWrap: isMobile ? "wrap" : "nowrap" }}
+          >
+            <TextField
+              label="Message"
+              placeholder="e.g., I would like you to list professors who excel in Computer Science."
+              fullWidth
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              InputProps={{
+                sx: {
+                  color: "white",
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#DEA204",
+                  },
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#DEA204",
+                  },
+                  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#DEA204",
+                  },
+                },
+              }}
+              InputLabelProps={{
+                sx: {
+                  color: "#DEA204",
+                  "&.Mui-focused": {
+                    color: "#DEA204",
+                  },
+                },
+              }}
+            />
+            <Button
+              variant="contained"
+              onClick={sendMessage}
+              sx={{
+                backgroundColor: "#DEA204",
+                "&:hover": { backgroundColor: "#A57801" },
+                color: "#ffffff",
+                fontFamily: "'Oswald', sans-serif",
+                fontWeight: "500",
+                fontSize: { xs: "14px", md: "16px" },
+                mt: isMobile ? 2 : 0,
+              }}
+            >
+              Send
+            </Button>
+          </Stack>
+        </Stack>
+      </ChatSection>
     </>
-  )
+  );
 }

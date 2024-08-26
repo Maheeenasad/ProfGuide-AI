@@ -31,50 +31,50 @@ const Navbar = styled(AppBar)({
 });
 
 const HeroSection = styled(Box)({
-  width: "100%", // Full width
-  height: "100vh", // Full viewport height
-  backgroundColor: "#34495E", // Navy Blue
-  color: "#FFFFFF", // White text
+  width: "100%",
+  height: "100vh",
+  backgroundColor: "#34495E",
+  color: "#FFFFFF",
   textAlign: "center",
-  margin: 0, // Removes any margin
-  boxSizing: "border-box", // Ensures padding doesn't affect width
-  display: "flex", // Use flexbox for centering
+  margin: 0,
+  boxSizing: "border-box",
+  display: "flex",
   flexDirection: "column",
-  justifyContent: "center", // Vertically center the content
-  alignItems: "center", // Horizontally center the content
+  justifyContent: "center",
+  alignItems: "center",
   fontFamily: "'Oswald', sans-serif",
 });
 
 const AboutSection = styled(Box)({
-  padding: "50px", // Adjust padding as needed
-  boxSizing: "border-box", // Ensures padding doesn't affect width
+  padding: "50px",
+  boxSizing: "border-box",
 });
 
 const AboutContent = styled(Box)({
-  textAlign: "left", // Align text to the left
+  textAlign: "left",
 });
 
 const AboutImage = styled("img")({
-  width: "100%", // Full width of the grid item
-  height: "auto", // Maintain aspect ratio
+  width: "100%",
+  height: "auto",
 });
 
 const HowItWorksSection = styled(Box)({
-  backgroundColor: "#ECF0F1", // Soft White
+  backgroundColor: "#ECF0F1",
   padding: "50px 0",
   textAlign: "center",
-  width: "100%", // Full width
-  margin: 0, // Removes any margin
-  boxSizing: "border-box", // Ensures padding doesn't affect width
+  width: "100%",
+  margin: 0,
+  boxSizing: "border-box",
 });
 
 const CardContainer = styled(Box)({
-  perspective: "1000px", // Perspective for 3D effect
-  margin: "20px", // Spacing between cards
-  cursor: "pointer", // Pointer cursor on hover
-  width: "300px", // Consistent card width
-  height: "200px", // Consistent card height
-  position: "relative", // Ensure the cards stack properly
+  perspective: "1000px",
+  margin: "20px",
+  cursor: "pointer",
+  width: "300px",
+  height: "200px",
+  position: "relative",
 });
 
 const Card = styled(Box)({
@@ -92,21 +92,21 @@ const CardSide = styled(Box)({
   position: "absolute",
   width: "100%",
   height: "100%",
-  backfaceVisibility: "hidden", // Hide the back side when flipping
+  backfaceVisibility: "hidden",
   borderRadius: "10px",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  flexDirection: "column", // Stack number and text vertically
+  flexDirection: "column",
 });
 
 const CardFront = styled(CardSide)({
-  backgroundColor: "#2C3E50", // Blue color
+  backgroundColor: "#2C3E50",
   color: "white",
 });
 
 const CardBack = styled(CardSide)({
-  backgroundColor: "#DEA204", // Teal color
+  backgroundColor: "#DEA204",
   color: "white",
   transform: "rotateY(180deg)",
 });
@@ -115,33 +115,33 @@ const NumberCircle = styled(Box)({
   width: "40px",
   height: "40px",
   backgroundColor: "white",
-  color: "#2C3E50", // Same blue as the card front
+  color: "#2C3E50",
   borderRadius: "50%",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   fontWeight: "bold",
-  marginBottom: "10px", // Space between number and text
+  marginBottom: "10px",
 });
 
 const Footer = styled(Box)({
-  backgroundColor: "#2C3E50", // Dark purple background
+  backgroundColor: "#2C3E50",
   color: "white",
-  padding: "24px 30px", // Equivalent to py-6 in Tailwind
+  padding: "24px 30px",
   textAlign: "center",
   width: "100%",
   boxSizing: "border-box",
 });
 
 const FooterLink = styled("a")({
-  color: "#2C3E50", // Dark purple for icons
+  color: "#2C3E50",
   backgroundColor: "white",
-  padding: "8px", // Equivalent to p-2 in Tailwind
+  padding: "8px",
   borderRadius: "50%",
   display: "inline-block",
   transition: "background-color 0.3s",
   "&:hover": {
-    backgroundColor: "#DEA204", // Light pink hover effect
+    backgroundColor: "#DEA204",
   },
 });
 
@@ -172,7 +172,6 @@ export default function Home() {
             padding: isMobile ? "0 6px" : "0 40px",
           }}
         >
-          {/* Left-aligned title */}
           <Typography
             variant="h6"
             component="div"
@@ -185,7 +184,6 @@ export default function Home() {
             ProfGuide AI
           </Typography>
 
-          {/* Right-aligned Hamburger menu on mobile and "Let's Start" button on desktop */}
           {isMobile ? (
             <>
               <IconButton
@@ -193,7 +191,7 @@ export default function Home() {
                 color="inherit"
                 onClick={toggleMenu}
                 sx={{
-                  padding: "20px", // Ensure enough padding for the hamburger icon
+                  padding: "20px",
                 }}
               >
                 <Menu />
@@ -204,8 +202,8 @@ export default function Home() {
                 onClose={closeMenu}
                 sx={{
                   "& .MuiDrawer-paper": {
-                    backgroundColor: "#2C3E50", // Background color for the drawer
-                    color: "white", // Default text color for the drawer
+                    backgroundColor: "#2C3E50",
+                    color: "white",
                   },
                 }}
               >
@@ -245,7 +243,7 @@ export default function Home() {
                       sx={{
                         backgroundColor: "#DEA204",
                         "&:hover": { backgroundColor: "#A57801" },
-                        color: "#ffffff", // White text color
+                        color: "#ffffff",
                         fontFamily: "'Oswald', sans-serif",
                         fontWeight: "500",
                         width: "100%",
@@ -334,7 +332,7 @@ export default function Home() {
           sx={{
             fontFamily: "'Oswald', sans-serif",
             fontWeight: "700",
-            fontSize: { xs: "2.5rem", md: "3.75rem" }, // Smaller font size on mobile
+            fontSize: { xs: "2.5rem", md: "3.75rem" },
           }}
         >
           Find Your Ideal <span style={{ color: "#DEA204" }}>Professor</span>{" "}
@@ -347,7 +345,7 @@ export default function Home() {
           sx={{
             fontFamily: "'Oswald', sans-serif",
             fontWeight: "400",
-            fontSize: { xs: "1.25rem", md: "1.5rem" }, // Smaller font size on mobile
+            fontSize: { xs: "1.25rem", md: "1.5rem" },
           }}
         >
           Get personalized professor recommendations tailored to your needs.
@@ -356,13 +354,13 @@ export default function Home() {
           <Button
             variant="contained"
             sx={{
-              backgroundColor: "#DEA204", // Teal
-              "&:hover": { backgroundColor: "#A57801" }, // Darker Teal for hover
+              backgroundColor: "#DEA204",
+              "&:hover": { backgroundColor: "#A57801" },
               color: "#ffffff",
               mt: 2,
               fontFamily: "'Oswald', sans-serif",
               fontWeight: "500",
-              fontSize: { xs: "14px", md: "16px" }, // Smaller font size on mobile
+              fontSize: { xs: "14px", md: "16px" },
             }}
           >
             Ask the AI Assistant
@@ -555,8 +553,8 @@ export default function Home() {
           alignItems="center"
           spacing={2}
           sx={{
-            flexDirection: { xs: "column", md: "row" }, // Stack on xs, row on md and up
-            textAlign: { xs: "center", md: "left" }, // Center text on xs, left-align on md and up
+            flexDirection: { xs: "column", md: "row" },
+            textAlign: { xs: "center", md: "left" },
           }}
         >
           <Grid item xs={12} md={6}>

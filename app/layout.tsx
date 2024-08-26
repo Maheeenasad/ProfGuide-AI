@@ -6,7 +6,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "ProfGuide AI",
-  description: "Get personalized professor recommendations tailored to your needs.",
+  description:
+    "Get personalized professor recommendations tailored to your needs.",
 };
 
 export default function RootLayout({
