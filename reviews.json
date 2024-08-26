@@ -1,0 +1,124 @@
+{
+    "reviews": [
+      {
+        "professor": "Dr. Emily Clark",
+        "review": "Engaging lectures and clear explanations. Highly recommended!",
+        "subject": "Biology",
+        "stars": 5
+      },
+      {
+        "professor": "Prof. Michael Chen",
+        "review": "Challenging course, but fair grading. Office hours were helpful.",
+        "subject": "Physics",
+        "stars": 4
+      },
+      {
+        "professor": "Dr. Sarah Johnson",
+        "review": "Interesting content, but lectures could be more organized.",
+        "subject": "Psychology",
+        "stars": 3
+      },
+      {
+        "professor": "Prof. David Thompson",
+        "review": "Tough grader, but you'll learn a lot if you put in the effort.",
+        "subject": "Mathematics",
+        "stars": 4
+      },
+      {
+        "professor": "Dr. Lisa Patel",
+        "review": "Excellent at relating course material to real-world scenarios.",
+        "subject": "Business",
+        "stars": 5
+      },
+      {
+        "professor": "Prof. Robert Wilson",
+        "review": "Knowledgeable, but not very approachable. Assignments were unclear.",
+        "subject": "Computer Science",
+        "stars": 2
+      },
+      {
+        "professor": "Dr. Maria Rodriguez",
+        "review": "Passionate about the subject, which made classes enjoyable.",
+        "subject": "Literature",
+        "stars": 4
+      },
+      {
+        "professor": "Prof. James Lee",
+        "review": "Difficult to follow in lectures. Textbook was more helpful.",
+        "subject": "Chemistry",
+        "stars": 2
+      },
+      {
+        "professor": "Dr. Anna Kowalski",
+        "review": "Great at fostering class discussions. Fair and constructive feedback.",
+        "subject": "Sociology",
+        "stars": 5
+      },
+      {
+        "professor": "Prof. Thomas Brown",
+        "review": "Dry lectures, but comprehensive course content.",
+        "subject": "History",
+        "stars": 3
+      },
+      {
+        "professor": "Dr. Samantha Wright",
+        "review": "Innovative teaching methods. Made a difficult subject accessible.",
+        "subject": "Engineering",
+        "stars": 5
+      },
+      {
+        "professor": "Prof. Daniel Kim",
+        "review": "Disorganized and often late to class. Grading was inconsistent.",
+        "subject": "Economics",
+        "stars": 1
+      },
+      {
+        "professor": "Dr. Rachel Green",
+        "review": "Supportive and encouraging. Always available for extra help.",
+        "subject": "Education",
+        "stars": 5
+      },
+      {
+        "professor": "Prof. Christopher Davis",
+        "review": "Knowledgeable but strict. Be prepared to work hard.",
+        "subject": "Law",
+        "stars": 4
+      },
+      {
+        "professor": "Dr. Olivia Martinez",
+        "review": "Engaging lecturer with a great sense of humor. Assignments were relevant.",
+        "subject": "Anthropology",
+        "stars": 5
+      },
+      {
+        "professor": "Prof. William Taylor",
+        "review": "Course material was outdated. Needs to incorporate more recent research.",
+        "subject": "Political Science",
+        "stars": 2
+      },
+      {
+        "professor": "Dr. Elizabeth Chang",
+        "review": "Challenging but rewarding course. Dr. Chang is passionate about the subject.",
+        "subject": "Philosophy",
+        "stars": 4
+      },
+      {
+        "professor": "Prof. George Nkrumah",
+        "review": "Brilliant mind but struggles to communicate clearly. Office hours helped.",
+        "subject": "Physics",
+        "stars": 3
+      },
+      {
+        "professor": "Dr. Fatima Al-Sayed",
+        "review": "Inspiring teacher. Made me consider changing my major to this field.",
+        "subject": "Environmental Science",
+        "stars": 5
+      },
+      {
+        "professor": "Prof. Hiroshi Tanaka",
+        "review": "Very demanding, but ultimately a transformative class experience.",
+        "subject": "Art History",
+        "stars": 4
+      }
+    ]
+  }
